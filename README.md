@@ -12,3 +12,13 @@ docker-machine env DOCKER-MACHINE-NAME
 eval $(docker-machine env docker-dev)
 
 docker-machine ssh DOCKER-MACHINE-NAME
+
+## Container cleanup 
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+
+## Image cleanup
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -a -q)
+
