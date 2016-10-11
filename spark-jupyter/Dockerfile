@@ -28,19 +28,15 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 # Switch back to jovyan to avoid accidental container runs as root
-USER $NB_USER
 
 # 2nd part is based on scipy-notebook
 
-USER root
 
 # libav-tools for matplotlib anim
 RUN apt-get update && \
     apt-get install -y --no-install-recommends libav-tools && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
-USER $NB_USER
 
 # Install Python 3 packages
 # Remove pyqt and qt pulled in for matplotlib since we're only ever going to
@@ -110,18 +106,13 @@ RUN MPLBACKEND=Agg $CONDA_DIR/envs/python2/bin/python -c "import matplotlib.pypl
 RUN mkdir -p $HOME/.ipython/profile_default/startup
 COPY mplimporthook.py $HOME/.ipython/profile_default/startup/
 
-USER root
 
 # Install Python 2 kernel spec globally to avoid permission problems when NB_UID
 # switching at runtime.
 RUN $CONDA_DIR/envs/python2/bin/python -m ipykernel install
 
-USER $NB_USER
-
 
 ### 3rd part based on pyspark-notebook
-
-USER root
 
 # Spark dependencies
 ENV APACHE_SPARK_VERSION 1.6.1
@@ -156,11 +147,7 @@ ENV PYTHONPATH $SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.9-src.zip
 ENV MESOS_NATIVE_LIBRARY /usr/local/lib/libmesos.so
 ENV SPARK_OPTS --driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info
 
-USER $NB_USER
-
 ### 4th part based on all-spark-notebook
-
-USER root
 
 # RSpark config
 ENV R_LIBS_USER $SPARK_HOME/R/lib
@@ -187,5 +174,3 @@ RUN conda config --add channels r && \
 # Apache Toree kernel
 RUN pip --no-cache-dir install toree==0.1.0.dev7
 RUN jupyter toree install --user
-
-
