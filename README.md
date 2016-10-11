@@ -2,8 +2,8 @@
 Install docker based on the OS
 
 ## Docker-machine
-docker-machine ls
 docker-machine create --driver virtualbox --virtualbox-memory 2048 --virtualbox-cpu-count=4 DOCKER-MACHINE-NAME
+docker-machine ls
 docker-machine env DOCKER-MACHINE-NAME
 eval $(docker-machine env docker-dev)
 

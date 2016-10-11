@@ -1,0 +1,9 @@
+notebook:
+  image: jupyter/all-spark-notebook
+  hostname: spark
+  ports:
+    - 4040:4040
+    - 8888:8888
+  volumes:
+    - ./data:/data
+    - ./notebooks:/home/jovyan/work
