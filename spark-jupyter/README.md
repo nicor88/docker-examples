@@ -4,8 +4,11 @@
 
 ## Setup
 docker-machine create --driver virtualbox --virtualbox-memory 2048 --virtualbox-cpu-count=4 docker-dev
+
 If the docker machine is not up run: `docker-machine start docker-dev`
+
 `docker-machine env docker-dev`
+
 `eval $(docker-machine env docker-dev)`
 
 ## Run the Container
