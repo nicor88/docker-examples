@@ -1,5 +1,5 @@
 notebook:
-  image: jupyter/all-spark-notebook
+  image: nicor88/spark-jupyter
   hostname: spark
   ports:
     - 4040:4040

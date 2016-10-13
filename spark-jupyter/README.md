@@ -1,11 +1,12 @@
 ## Build the image
 
-`docker build --rm=True --tag "nico88/spark-jupyter:0.0.1" . `  
+`docker build --rm=True --tag "nicor88/spark-jupyter" . `  
 
-## Setup
-docker-machine create --driver virtualbox --virtualbox-memory 2048 --virtualbox-cpu-count=4 docker-dev
+## Create a Docker Machine
+`docker-machine create --driver virtualbox --virtualbox-memory 2048 --virtualbox-cpu-count=4 docker-dev`
 
-If the docker machine is not up run: `docker-machine start docker-dev`
+## Run Docker
+`docker-machine start docker-dev`
 
 `docker-machine env docker-dev`
 

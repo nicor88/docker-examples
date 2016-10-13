@@ -7,13 +7,15 @@ MAINTAINER nicor88
 USER root
 
 # Install all OS dependencies for fully functional notebook server
-RUN apt-get update && apt-get install -yq --no-install-recommends \
+
+RUN apt-get update
+
+RUN apt-get install -yq --no-install-recommends \
     git \
-    vim \
-    jed \
-    emacs \
     build-essential \
-    python-dev \
+    python-dev 
+
+RUN apt-get install -yq --no-install-recommends \
     unzip \
     libsm6 \
     pandoc \
@@ -23,20 +25,12 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     texlive-fonts-recommended \
     texlive-generic-recommended \
     libxrender1 \
-    inkscape \
-    && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    inkscape 
 
 # libav-tools for matplotlib anim
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends libav-tools && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y --no-install-recommends libav-tools
 
-RUN apt-get -y update && \
-    apt-get install -y --no-install-recommends openjdk-7-jre-headless && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y --no-install-recommends openjdk-7-jre-headless
 
 # Mesos dependencies
 # Currently, Mesos is not available from Debian Jessie.
@@ -48,9 +42,16 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     CODENAME=wheezy && \
     echo "deb http://repos.mesosphere.io/${DISTRO} ${CODENAME} main" > /etc/apt/sources.list.d/mesosphere.list && \
     apt-get -y update && \
-    apt-get --no-install-recommends -y --force-yes install mesos=0.22.1-1.0.debian78 && \
-    apt-get clean && \
+    apt-get --no-install-recommends -y --force-yes install mesos=0.22.1-1.0.debian78
+
+# R pre-requisites
+RUN apt-get install -y --no-install-recommends \
+    fonts-dejavu \
+    gfortran \
+    gcc && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+USER $NB_USER
 
 ### 2nd part is based on scipy-notebook
 
@@ -118,6 +119,7 @@ RUN ln -s $CONDA_DIR/envs/python2/bin/pip $CONDA_DIR/bin/pip2 && \
 ENV XDG_CACHE_HOME /home/$NB_USER/.cache/
 RUN MPLBACKEND=Agg $CONDA_DIR/envs/python2/bin/python -c "import matplotlib.pyplot"
 
+
 # Configure ipython kernel to use matplotlib inline backend by default
 RUN mkdir -p $HOME/.ipython/profile_default/startup
 COPY mplimporthook.py $HOME/.ipython/profile_default/startup/
@@ -125,12 +127,16 @@ COPY mplimporthook.py $HOME/.ipython/profile_default/startup/
 
 # Install Python 2 kernel spec globally to avoid permission problems when NB_UID
 # switching at runtime.
+USER root
 RUN $CONDA_DIR/envs/python2/bin/python -m ipykernel install
-
+USER $NB_USER
 
 ### 3rd part based on pyspark-notebook
 
 # Spark dependencies
+
+USER root
+
 ENV APACHE_SPARK_VERSION 1.6.1
 
 RUN cd /tmp && \
@@ -146,20 +152,12 @@ ENV PYTHONPATH $SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.9-src.zip
 ENV MESOS_NATIVE_LIBRARY /usr/local/lib/libmesos.so
 ENV SPARK_OPTS --driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info
 
-### 4th part based on all-spark-notebook
+USER $NB_USER
 
+### 4th part based on all-spark-notebook
+RUN echo "4th part running"
 # RSpark config
 ENV R_LIBS_USER $SPARK_HOME/R/lib
-
-# R pre-requisites
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    fonts-dejavu \
-    gfortran \
-    gcc && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-USER $NB_USER
 
 # R packages
 # Pin r-base to a specific build number for https://github.com/jupyter/docker-stacks/issues/210#issuecomment-246081809
