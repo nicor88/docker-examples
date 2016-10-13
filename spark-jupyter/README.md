@@ -15,6 +15,10 @@
 ## Run the Container
 `docker-compose up`
 
+## Connect to Jupyter
+1. Get the ip of the machine where is running the container: `docker-machine ip docker-dev `
+2. Connect to http://docker-dev-ip:8888
+
 ## Links
 
 * https://github.com/jupyter/docker-stacks/blob/master/minimal-notebook/Dockerfile
