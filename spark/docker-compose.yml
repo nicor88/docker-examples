@@ -47,4 +47,3 @@ worker:
   volumes:
     - ./conf/worker:/conf
     - ./data:/data
-    

@@ -29,6 +29,8 @@ docker-machine ssh docker-dev
 
 List all Docker Images: `docker images`
 
+Stop a container: `docker stop ContainerId`
+
 Remove an Image: `docker rmi <imageid>`
 
 Show running Containers: `docker ps`

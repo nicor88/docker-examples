@@ -1,5 +1,5 @@
 notebook:
-  image: spark-jupyter
+  image: spark-jupyter:latest
   hostname: spark
   ports:
     - 4040:4040
