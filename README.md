@@ -1,38 +1,54 @@
-## Dependencies 
+## Dependencies
 Install docker based on the OS
+* [Mac OSx](https://docs.docker.com/docker-for-mac/)
+* [Linux]()
 
 ## Docker-machine
+Follow this commands if you are running __boot2docker__
 
-docker-machine create --driver virtualbox --virtualbox-memory 2048 --virtualbox-cpu-count=4 DOCKER-MACHINE-NAME
+Create a docker-machine:
+<pre>
+docker-machine create
+  --driver virtualbox
+  --virtualbox-memory 2048
+  --virtualbox-cpu-count=4
+  docker-dev
+</pre>
 
-docker-machine ls
-
-docker-machine env DOCKER-MACHINE-NAME
-
+Setup the environment:
+<pre>
+docker-machine env docker-dev
 eval $(docker-machine env docker-dev)
+</pre>
 
-docker-machine ssh DOCKER-MACHINE-NAME
+Login inside the machine:
+<pre>
+docker-machine ssh docker-dev
+</pre>
 
 ## Utility commands Docker
 
-docker images
+List all Docker Images: `docker images`
 
-docker ps
+Remove an Image: `docker rmi <imageid>`
 
-docker rmi <imageid>
+Show running Containers: `docker ps`
 
-docker rmi -f `docker images -a -q`
+Remove all the Images: __docker rmi -f `docker images -a -q`__
 
-## Container cleanup 
+## Container cleanup
 
+<pre>
+# Stop all the containers
 docker stop $(docker ps -a -q)
-
+# Remove all the containers
 docker rm $(docker ps -a -q)
+</pre>
 
 ## Image cleanup
-
+<pre>
+# Stop all the containers
 docker stop $(docker ps -a -q)
-
-docker rm $(docker ps -a -q)
-
+# Remove all the images
 docker rmi $(docker images -a -q)
+</pre>
