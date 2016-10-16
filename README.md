@@ -3,8 +3,7 @@ Install docker based on the OS
 * [Mac OSx](https://docs.docker.com/docker-for-mac/)
 * [Linux]()
 
-## Docker-machine
-Follow this commands if you are running __boot2docker__
+## Run Docker (just for __boot2docker__)
 
 Create a docker-machine:
 <pre>
