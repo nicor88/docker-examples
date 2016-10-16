@@ -1,7 +1,7 @@
 ## Dependencies
 Install docker based on the OS
 * [Mac OSx](https://docs.docker.com/docker-for-mac/)
-* [Linux]()
+* [Linux](https://docs.docker.com/engine/installation/linux/)
 
 ## Run Docker (just for __boot2docker__)
 
@@ -24,6 +24,9 @@ Login inside the machine:
 <pre>
 docker-machine ssh docker-dev
 </pre>
+
+## Push an Image to Docker-Hub
+`docker push youruser/imageName`
 
 ## Utility commands Docker
 
