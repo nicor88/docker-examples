@@ -1,7 +1,7 @@
 ## Dependencies
 Install docker based on the OS
-* [Mac OSx](https://docs.docker.com/docker-for-mac/)
-* [Linux](https://docs.docker.com/engine/installation/linux/)
+*   [Mac OSx](https://docs.docker.com/docker-for-mac/)
+*   [Linux](https://docs.docker.com/engine/installation/linux/)
 
 ## Run Docker (just for __boot2docker__)
 

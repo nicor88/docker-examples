@@ -1,5 +1,5 @@
-"""Startup script for IPython kernel.
-
+"""
+Startup script for IPython kernel.
 Installs an import hook to configure the matplotlib backend on the fly.
 
 Originally from @minrk at
@@ -32,7 +32,8 @@ class MatplotlibFinder(object):
 
         try:
             # remove myself from the import hooks
-            sys.meta_path = [loader for loader in sys.meta_path if loader is not self]
+            sys.meta_path = [loader for loader in sys.meta_path
+                             if loader is not self]
         except ValueError:
             pass
 
