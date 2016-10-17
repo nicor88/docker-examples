@@ -1,23 +1,15 @@
 ## Build the image
 
-`docker build --rm=True --tag "nicor88/spark-jupyter" . `  
-
-## Create a Docker Machine
-`docker-machine create --driver virtualbox --virtualbox-memory 2048 --virtualbox-cpu-count=4 docker-dev`
-
-## Run Docker
-`docker-machine start docker-dev`
-
-`docker-machine env docker-dev`
-
-`eval $(docker-machine env docker-dev)`
+`docker build --rm=True --tag "spark-jupyter" . `  
 
 ## Run the Container
-`docker-compose up`
+To run the container with the output: `docker-compose up`
+To run the container without the output: `docker-compose up -d`
 
 ## Connect to Jupyter
-1. Get the ip of the machine where is running the container: `docker-machine ip docker-dev `
-2. Connect to http://docker-dev-ip:8888
+1. Get the containerId: `docker ps `
+2. Get the ip of the container: `docker inspect CONTAINER_ID `
+2. Connect to http://CONTAINER_IP:8888
 
 ## Links
 

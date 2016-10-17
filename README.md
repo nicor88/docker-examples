@@ -1,10 +1,9 @@
 ## Dependencies
 Install docker based on the OS
 * [Mac OSx](https://docs.docker.com/docker-for-mac/)
-* [Linux]()
+* [Linux](https://docs.docker.com/engine/installation/linux/)
 
-## Docker-machine
-Follow this commands if you are running __boot2docker__
+## Run Docker (just for __boot2docker__)
 
 Create a docker-machine:
 <pre>
@@ -26,9 +25,14 @@ Login inside the machine:
 docker-machine ssh docker-dev
 </pre>
 
+## Push an Image to Docker-Hub
+`docker push youruser/imageName`
+
 ## Utility commands Docker
 
 List all Docker Images: `docker images`
+
+Stop a container: `docker stop ContainerId`
 
 Remove an Image: `docker rmi <imageid>`
 
