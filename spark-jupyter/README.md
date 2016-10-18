@@ -1,6 +1,6 @@
 ## Build the image
 
-`docker build --rm=True --tag "nicorc88/spark-jupyter" . `  
+`docker build --rm=True --tag "nicor88/spark-jupyter" . `  
 
 ## Run the Container
 To run the container with the output: `docker-compose up`
