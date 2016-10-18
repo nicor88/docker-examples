@@ -3,7 +3,9 @@
 `docker build --rm=True --tag "nicor88/spark-jupyter" . `  
 
 ## Run the Container
+
 To run the container with the output: `docker-compose up`
+
 To run the container without the output: `docker-compose up -d`
 
 ## Connect to Jupyter
