@@ -38,11 +38,11 @@ Remove an Image: `docker rmi <imageid>`
 
 Show running Containers: `docker ps`
 
+Show all the containers (also the ones not running): `docker ps -a`
+
 ## Container cleanup
 
 <pre>
-# Show all the containers (also the ones not running)
-docker ps -a
 # Stop all the containers
 docker stop $(docker ps -a -q)
 # Remove all the containers
