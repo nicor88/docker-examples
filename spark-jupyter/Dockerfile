@@ -13,30 +13,18 @@ RUN apt-get update
 RUN apt-get install -yq --no-install-recommends \
     git \
     build-essential \
-    python-dev 
-
-RUN apt-get install -yq --no-install-recommends \
+    python-dev \
     unzip \
     libsm6 \
-    pandoc \
-    texlive-latex-base \
-    texlive-latex-extra \
-    texlive-fonts-extra \
-    texlive-fonts-recommended \
-    texlive-generic-recommended \
-    libxrender1 \
-    inkscape 
-
-# libav-tools for matplotlib anim
-RUN apt-get install -y --no-install-recommends libav-tools
-
-RUN apt-get install -y --no-install-recommends openjdk-7-jre-headless
+    libav-tools \
+    openjdk-7-jre-headless \
+    gcc && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Mesos dependencies
 # Currently, Mesos is not available from Debian Jessie.
-# So, we are installing it from Debian Wheezy. Once it
-# becomes available for Debian Jessie. We should switch
-# over to using that instead.
+# So, it is installed from Debian Wheezy.
+
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     DISTRO=debian && \
     CODENAME=wheezy && \
@@ -44,16 +32,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     apt-get -y update && \
     apt-get --no-install-recommends -y --force-yes install mesos=0.22.1-1.0.debian78
 
-# R pre-requisites
-RUN apt-get install -y --no-install-recommends \
-    fonts-dejavu \
-    gfortran \
-    gcc && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
 USER $NB_USER
-
-### 2nd part is based on scipy-notebook
 
 # Install Python 3 packages
 # Remove pyqt and qt pulled in for matplotlib since we're only ever going to
@@ -77,6 +56,7 @@ RUN conda install --quiet --yes \
     'bokeh=0.11*' \
     'sqlalchemy=1.0*' \
     'hdf5=1.8.17' \
+    'gensim=0.12*'  \
     'h5py=2.6*' && \
     conda remove --quiet --yes --force qt pyqt && \
     conda clean -tipsy
@@ -154,8 +134,6 @@ ENV SPARK_OPTS --driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M -
 
 USER $NB_USER
 
-### 4th part based on all-spark-notebook
-RUN echo "4th part running"
 # RSpark config
 ENV R_LIBS_USER $SPARK_HOME/R/lib
 
