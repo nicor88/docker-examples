@@ -111,17 +111,16 @@ USER root
 RUN $CONDA_DIR/envs/python2/bin/python -m ipykernel install
 USER $NB_USER
 
-### 3rd part based on pyspark-notebook
 
 # Spark dependencies
-
 USER root
 
-ENV APACHE_SPARK_VERSION 1.6.1
+ENV APACHE_SPARK_VERSION 1.6.2
+
+RUN echo "Installing Spark " $APACHE_SPARK_VERSION
 
 RUN cd /tmp && \
         wget -q http://d3kbcqa49mib13.cloudfront.net/spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6.tgz && \
-        echo "09f3b50676abc9b3d1895773d18976953ee76945afa72fa57e6473ce4e215970 *spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6.tgz" | sha256sum -c - && \
         tar xzf spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6.tgz -C /usr/local && \
         rm spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6.tgz
 RUN cd /usr/local && ln -s spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6 spark
