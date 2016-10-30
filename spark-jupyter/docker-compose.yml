@@ -1,6 +1,6 @@
 notebook:
-  image: nicor88/spark-jupyter:latest
-  hostname: spark
+  image: nicor88/spark-jupyter
+  hostname: spark-juypter
   ports:
     - 4040:4040
     - 8888:8888
