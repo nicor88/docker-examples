@@ -25,8 +25,16 @@ Login inside the machine:
 docker-machine ssh docker-dev
 </pre>
 
+## Run an Image in a ContainerId
+<pre>
+#Using Image Name
+docker run -i -t imageName:imageVersion /bin/bash
+#Using ContainerId
+docker run -i -t containerId /bin/bash
+</pre>
+
 ## Push an Image to Docker-Hub
-`docker push youruser/imageName`
+`docker push yourUser/imageName`
 
 ## Utility commands Docker
 
