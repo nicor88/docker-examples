@@ -79,7 +79,7 @@ RUN conda clean -tipsy
 # Install DB dependencies
 RUN pip install psycopg2==2.6.1 \
                 redis==2.10.5 \
-                sqlalchemy-redshift==0.5.0
+                sqlalchemy-redshift==0.5.0 \
                 mysqlclient==1.3.7
 
 # Install caravel
