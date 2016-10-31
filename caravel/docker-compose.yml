@@ -1,0 +1,5 @@
+notebook:
+  image: nicor88/caravel:0.0.1
+  hostname: caravel
+  ports:
+    - 8088:8088
