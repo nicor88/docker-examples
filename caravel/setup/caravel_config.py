@@ -7,6 +7,7 @@ import os
 ROW_LIMIT = int(os.getenv("ROW_LIMIT", 5000))
 WEBSERVER_THREADS = int(os.getenv("WEBSERVER_THREADS", 8))
 
+ENABLE_CORS = "true"
 CARAVEL_WEBSERVER_PORT = int(os.getenv("CARAVEL_WEBSERVER_PORT", 8088))
 # ---------------------------------------------------------
 
