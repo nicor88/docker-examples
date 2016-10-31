@@ -107,5 +107,5 @@ RUN caravel load_examples
 EXPOSE 8088
 
 HEALTHCHECK CMD ["curl", "-f", "http://localhost:8088/health"]
-#ENTRYPOINT ["caravel"]
-#CMD ["runserver"]
+ENTRYPOINT ["caravel"]
+CMD ["runserver"]
