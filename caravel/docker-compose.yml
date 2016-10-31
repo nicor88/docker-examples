@@ -1,5 +1,7 @@
 notebook:
   image: nicor88/caravel
   hostname: caravel
+  environment:
+    - SQLALCHEMY_DATABASE_URI=sqlite:////home/caravel/.caravel/caravel.db
   ports:
     - 8088:8088
