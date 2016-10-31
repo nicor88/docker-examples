@@ -34,7 +34,7 @@ RUN apt-get install -yq --no-install-recommends \
     postgresql-server-dev-9.5 \
     postgresql-client-9.5 \
     postgresql-contrib-9.5 \
-    mysql-client-core-5.7
+    libmysqlclient-dev
 
 
 # Setup Version ENV
@@ -80,7 +80,7 @@ RUN conda clean -tipsy
 RUN pip install psycopg2==2.6.1 \
                 redis==2.10.5 \
                 sqlalchemy-redshift==0.5.0
-#                mysqlclient==1.3.7
+                mysqlclient==1.3.7
 
 # Install caravel
 
@@ -109,3 +109,5 @@ EXPOSE 8088
 HEALTHCHECK CMD ["curl", "-f", "http://localhost:8088/health"]
 ENTRYPOINT ["caravel"]
 CMD ["runserver"]
+
+# USER root
