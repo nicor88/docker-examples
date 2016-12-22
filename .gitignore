@@ -4,3 +4,4 @@ spark-jupyter/data
 
 # Ignore Jupiter Notebooks
 spark-jupyter/notebooks/.ipynb_checkpoints/
+go-jupyter/notebooks/.ipynb_checkpoints/

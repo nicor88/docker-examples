@@ -1,0 +1,8 @@
+go:
+  image: nicor88/go-jupyter:latest
+  command: jupyter notebook --no-browser --ip=0.0.0.0
+  hostname: go
+  ports:
+    - 9000:8888
+  volumes:
+    - ./notebooks:/notebooks
