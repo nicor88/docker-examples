@@ -32,4 +32,5 @@ RUN conda update conda
 RUN conda config --set always_yes yes
 RUN conda install anaconda-client jupyter
 
-CMD ["/usr/local/spark/bin/spark-class", "org.apache.spark.deploy.master.Master"]
+# not needed because the master is deploy with docker compose
+# CMD ["/usr/local/spark/bin/spark-class", "org.apache.spark.deploy.master.Master"]
