@@ -17,4 +17,8 @@ RUN sudo bash miniconda.sh -b -p $CONDA_DIR
 RUN rm /tmp/miniconda.sh
 RUN $CONDA_DIR/bin/conda install --yes conda==$MINICONDA_VER
 
+# setup conda in the env
 ENV PATH $CONDA_DIR/bin:$PATH
+
+# install libs
+RUN conda install --yes pandas
