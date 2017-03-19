@@ -24,9 +24,9 @@ Login inside the machine:
 
 ## Run an Image in a ContainerId
 <pre>#Using Image Name
-docker run -i -t imageName:imageVersion /bin/bash
+docker run -it imageName:imageVersion /bin/bash
 #Using ContainerId
-docker run -i -t containerId /bin/bash
+docker run -it containerId /bin/bash
 </pre>
 
 ## Push an Image to Docker-Hub
