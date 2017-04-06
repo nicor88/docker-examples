@@ -1,6 +1,5 @@
 # Ignore Data folder
-spark/data
-spark-jupyter/data
+*/data
 
 # Ignore Jupiter Notebooks
 spark-jupyter/notebooks/.ipynb_checkpoints/

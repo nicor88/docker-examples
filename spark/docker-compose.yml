@@ -1,5 +1,5 @@
 master:
-  image: docker-spark:1.6.2
+  image: nicorc88/docker-spark:latest
   command: /usr/local/spark/bin/spark-class org.apache.spark.deploy.master.Master -h master
   hostname: master
   environment:
@@ -23,16 +23,15 @@ master:
     - ./conf/master:/conf
     - ./data:/data
 
-worker:
-  image: docker-spark:1.6.2
+worker1:
+  image: nicorc88/docker-spark:latest
   command: /usr/local/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
-  hostname: worker
+  hostname: worker1
   environment:
     SPARK_CONF_DIR: /conf
     SPARK_WORKER_CORES: 2
     SPARK_WORKER_MEMORY: 1g
     SPARK_WORKER_PORT: 8881
-    SPARK_WORKER_WEBUI_PORT: 8081
   links:
     - master
   expose:
@@ -42,8 +41,28 @@ worker:
     - 7015
     - 7016
     - 8881
-  ports:
-    - 8081:8081
+  volumes:
+    - ./conf/worker:/conf
+    - ./data:/data
+
+worker2:
+  image: nicorc88/docker-spark:latest
+  command: /usr/local/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
+  hostname: worker2
+  environment:
+    SPARK_CONF_DIR: /conf
+    SPARK_WORKER_CORES: 2
+    SPARK_WORKER_MEMORY: 1g
+    SPARK_WORKER_PORT: 8881
+  links:
+    - master
+  expose:
+    - 7012
+    - 7013
+    - 7014
+    - 7015
+    - 7016
+    - 8881
   volumes:
     - ./conf/worker:/conf
     - ./data:/data

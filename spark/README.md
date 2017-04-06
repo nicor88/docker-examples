@@ -7,5 +7,7 @@
 </pre>
 
 ## Login inside the Container
-1.  Get the containerId: `docker ps `
-2.  Run `docker exec -it ContainerId /bin/sh`
+<pre># show active containers
+docker ps
+# exec a command against a container
+docker exec -it ContainerId /bin/sh
