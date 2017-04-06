@@ -24,13 +24,27 @@ ENV SPARK_HOME /usr/local/spark
 ENV PATH $PATH:$SPARK_HOME/bin
 
 # Install conda
-RUN curl -s https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh
-RUN bash miniconda.sh -b -p /opt/miniconda/
-ENV PATH /opt/miniconda/bin:$PATH
-RUN echo $PATH
-RUN conda update conda
+
+# Configure Miniconda
+ENV MINICONDA_VER 4.2.12
+ENV MINICONDA Miniconda3-$MINICONDA_VER-Linux-x86_64.sh
+ENV MINICONDA_URL https://repo.continuum.io/miniconda/$MINICONDA
+ENV CONDA_DIR /opt/miniconda
+
+WORKDIR /tmp
+RUN curl -L $MINICONDA_URL  -o miniconda.sh
+RUN echo $CONDA_DIR
+RUN bash miniconda.sh -b -p $CONDA_DIR
+RUN rm /tmp/miniconda.sh
+RUN $CONDA_DIR/bin/conda install --yes conda==$MINICONDA_VER
+
+# setup conda in the env
+ENV PATH $CONDA_DIR/bin:$PATH
+
 RUN conda config --set always_yes yes
 RUN conda install anaconda-client jupyter
 
-# not needed because the master is deploy with docker compose
-# CMD ["/usr/local/spark/bin/spark-class", "org.apache.spark.deploy.master.Master"]
+RUN mkdir -p /notebooks
+
+# copy jupyter configs
+COPY conf/jupyter /root/.jupyter

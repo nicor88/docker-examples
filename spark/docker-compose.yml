@@ -5,6 +5,9 @@ master:
   environment:
     SPARK_CONF_DIR: /conf
     MASTER: spark://master:7077
+    PYSPARK_PYTHON: /opt/miniconda/bin/python3.5
+    PYSPARK_DRIVER_PYTHON: jupyter
+    PYSPARK_DRIVER_PYTHON_OPTS: "notebook --log-level=INFO --allow-root"
   expose:
     - 7001
     - 7002
@@ -14,14 +17,17 @@ master:
     - 7006
     - 7077
     - 6066
+    - 8888
   ports:
     - 4040:4040
     - 6066:6066
     - 7077:7077
     - 8080:8080
+    - 8888:8888
   volumes:
     - ./conf/master:/conf
     - ./data:/data
+    - ./notebooks:/notebooks
 
 worker1:
   image: nicorc88/docker-spark:latest

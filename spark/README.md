@@ -2,12 +2,19 @@
 <pre>docker build --rm=True --tag "nicorc88/docker-spark:latest" .
 </pre>
 
-## Run the Container
-<pre>docker run -it -p 8088:8088 -p 8042:8042 -p 4040:4040 docker-spark:latest
+## Test commands in the Image
+<pre>docker run --rm nicorc88/docker-spark:latest python --version
+</pre>
+
+## Run Spark with 2 workes
+<pre>docker-compose up -d
 </pre>
 
 ## Login inside the Container
-<pre># show active containers
+<pre>
+# show active containers
 docker ps
-# exec a command against a container
-docker exec -it ContainerId /bin/sh
+# find the master container
+docker exec -it ContainerIdMaster pyspakr
+# run
+</pre>
