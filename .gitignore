@@ -1,11 +1,14 @@
 # Ignore Data folder
 */data
 
-*/notebooks/.ipynb_checkpoints/
+# Ignore jupyter checkpoints
+.ipynb_checkpoints/
+*/*/.ipynb_checkpoints/
+*/*/.checkpoints/.ipynb_checkpoints/
 
+# ignore node_modules
 nodejs/*/node_modules
 
 # spark
 spark/notebooks/metastore_db
 spark/notebooks/derby.log
-spark/notebooks/.checkpoints/
