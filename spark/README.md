@@ -7,14 +7,11 @@
 docker run --rm nicorc88/docker-spark:latest python --version
 </pre>
 
-## Run Spark with 2 workes
-<pre>docker-compose up -d
-</pre>
-
 ## Start Pyspark with Jupyter
-<pre># get containerId of Master Node
+<pre># start docker with compose
+docker-compose -f docker-compose-spark-jupyter.yml up -d
+# get containerId of Master Node
 docker ps | grep master
-
-# run Pyspark in the master
+# run Pyspark with Jupyter in the master
 docker exec -it ContainerIdMaster pyspak
 </pre>

@@ -1,9 +1,0 @@
-notebook:
-  image: nicor88/spark-jupyter
-  hostname: spark-juypter
-  ports:
-    - 4040:4040
-    - 8888:8888
-  volumes:
-    - ./data:/data
-    - ./notebooks:/home/jovyan/work

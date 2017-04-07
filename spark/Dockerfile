@@ -41,10 +41,21 @@ RUN $CONDA_DIR/bin/conda install --yes conda==$MINICONDA_VER
 # setup conda in the env
 ENV PATH $CONDA_DIR/bin:$PATH
 
+# config conda
 RUN conda config --set always_yes yes
-RUN conda install anaconda-client jupyter
+RUN conda config -f --add channels conda-forge
+RUN conda config -f --add channels defaults
+
+# install conda libs
+RUN conda install anaconda-client hdfs3 findspark ujson jsonschema toolz boto3 py4j
+RUN conda install numpy pandas==0.19.2
+RUN conda install jupyter
+
+# install visualization libs
+RUN conda install matplotlib plotly bokeh
 
 RUN mkdir -p /notebooks
+WORKDIR /notebooks
 
 # copy jupyter configs
 COPY conf/jupyter /root/.jupyter
