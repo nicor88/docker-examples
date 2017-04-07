@@ -2,19 +2,19 @@
 <pre>docker build --rm=True --tag "nicorc88/docker-spark:latest" .
 </pre>
 
-## Test commands in the Image
-<pre>docker run --rm nicorc88/docker-spark:latest python --version
+## Test the builded Image
+<pre># python version
+docker run --rm nicorc88/docker-spark:latest python --version
 </pre>
 
 ## Run Spark with 2 workes
 <pre>docker-compose up -d
 </pre>
 
-## Login inside the Container
-<pre>
-# show active containers
-docker ps
-# find the master container
-docker exec -it ContainerIdMaster pyspakr
-# run
+## Start Pyspark with Jupyter
+<pre># get containerId of Master Node
+docker ps | grep master
+
+# run Pyspark in the master
+docker exec -it ContainerIdMaster pyspak
 </pre>
