@@ -14,4 +14,6 @@ docker-compose -f docker-compose-spark-jupyter.yml up -d
 docker ps | grep master
 # run Pyspark with Jupyter in the master
 docker exec -it ContainerIdMaster pyspak
+# shutdown
+docker-compose -f docker-compose-spark-jupyter.yml dow
 </pre>
