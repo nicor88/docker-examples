@@ -12,3 +12,4 @@ nodejs/*/node_modules
 # spark
 spark/notebooks/metastore_db
 spark/notebooks/derby.log
+spark/notebooks/spark-warehouse
