@@ -1,9 +1,9 @@
 ## Build the image
 
-`docker build --rm=True --tag "nicor88/caravel" . `  
+<pre>docker build --rm=True --tag "nicor88/caravel:latest" . 
+</pre>
 
 ## Run caravel (1st Option)
-
 <pre>
 docker-compose up
 </pre>
