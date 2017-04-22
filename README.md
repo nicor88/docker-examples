@@ -38,29 +38,21 @@ docker push yourUser/imageName
 
 ## Utility commands Docker
 
-List all Docker Images: `docker images`
-
+### Containers Utility
+Show running Containers: `docker ps`
+Show all the containers (also the ones not running): `docker ps -a`
+Get Container Infos: `docker inspect ContainerId`
 Stop a container: `docker stop ContainerId`
 
+### Images Utility
+List all Docker Images: `docker images`
 Remove an Image: `docker rmi <imageid>`
 
-Show running Containers: `docker ps`
-
-Show all the containers (also the ones not running): `docker ps -a`
-
-Get Container Infos: `docker inspect ContainerId`
-
-## Container cleanup
-
+### Cleanup
 <pre># Stop all the containers
 docker stop $(docker ps -a -q)
 # Remove all the containers
 docker rm $(docker ps -a -q)
-</pre>
-
-## Image cleanup
-<pre># Stop all the containers
-docker stop $(docker ps -a -q)
 # Remove all the images
 docker rmi $(docker images -a -q)
 </pre>
