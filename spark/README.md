@@ -1,10 +1,10 @@
 ## Build Image
-<pre>docker build --rm=True --tag "nicorc88/docker-spark:latest" .
+<pre>docker build --rm=True --tag "nicor88/docker-spark:latest" .
 </pre>
 
 ## Test the builded Image
 <pre># python version
-docker run --rm nicorc88/docker-spark:latest python --version
+docker run --rm nicor88/docker-spark:latest python --version
 </pre>
 
 ## Start Spark with 2 nodes

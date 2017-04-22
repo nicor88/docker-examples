@@ -1,5 +1,5 @@
 master:
-  image: nicorc88/docker-spark:latest
+  image: nicor88/docker-spark:latest
   command: /usr/local/spark/bin/spark-class org.apache.spark.deploy.master.Master -h master
   hostname: master
   environment:
