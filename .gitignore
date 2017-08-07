@@ -13,3 +13,6 @@ nodejs/*/node_modules
 spark/notebooks/metastore_db
 spark/notebooks/derby.log
 spark/notebooks/spark-warehouse
+
+# amazon linux
+amazon-linux-lambda/build_dir
