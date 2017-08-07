@@ -1,5 +1,6 @@
-# Ignore Data folder
+# Ignore Generic Dirs
 */data
+*/build_dir
 
 # Ignore jupyter checkpoints
 .ipynb_checkpoints/
