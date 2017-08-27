@@ -1,5 +1,8 @@
 ## Build Image
 <pre>docker build --rm=True --tag "nicor88/docker-spark:latest" .
+
+# specific version
+docker build --rm=True --tag "nicor88/docker-spark:2.2.0" .
 </pre>
 
 ## Test the builded Image
@@ -8,7 +11,7 @@ docker run --rm nicor88/docker-spark:latest python --version
 </pre>
 
 ## Start Spark with 2 nodes
-<pre># star docker compose
+<pre># start docker compose
 docker-compose up -d
 # get containerId of Master Node
 docker ps | grep master
