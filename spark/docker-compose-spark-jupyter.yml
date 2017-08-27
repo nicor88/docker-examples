@@ -30,7 +30,7 @@ master:
     - ./notebooks:/notebooks
 
 worker1:
-  image: nicorc88/docker-spark:latest
+  image: nicor88/docker-spark:latest
   command: /usr/local/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
   hostname: worker1
   environment:
@@ -53,7 +53,7 @@ worker1:
     - ./data:/data
 
 worker2:
-  image: nicorc88/docker-spark:latest
+  image: nicor88/docker-spark:latest
   command: /usr/local/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
   hostname: worker2
   environment:
