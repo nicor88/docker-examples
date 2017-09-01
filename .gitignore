@@ -1,4 +1,5 @@
 # Ignore Generic Dirs
+.idea
 */data
 */build_dir
 
