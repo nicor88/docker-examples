@@ -7,8 +7,8 @@ import time
 import sys
 sys.path.extend(['/'])
 
-# ugly fix to wait postgres to be up
-time.sleep(30)
+# ugly fix to wait postgres to be up during docker compose
+time.sleep(10)
 
 postgres_cfg = yaml.load(resource_string('app.config', 'settings.yml'))['postgres']
 

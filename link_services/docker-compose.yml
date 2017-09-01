@@ -11,7 +11,7 @@ db:
 app_python:
   build: .
   dockerfile: DockerfileConda
-  command: python /app/hello.py
+  command: python /app/app.py
   hostname: app_python
   links:
     - db
