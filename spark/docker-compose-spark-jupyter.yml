@@ -5,7 +5,7 @@ master:
   environment:
     SPARK_CONF_DIR: /conf
     MASTER: spark://master:7077
-    PYSPARK_PYTHON: /opt/miniconda/bin/python3.5
+    PYSPARK_PYTHON: /opt/miniconda/bin/python
     PYSPARK_DRIVER_PYTHON: jupyter
     PYSPARK_DRIVER_PYTHON_OPTS: "notebook --log-level=INFO --allow-root"
   expose:
@@ -35,7 +35,7 @@ worker1:
   hostname: worker1
   environment:
     SPARK_CONF_DIR: /conf
-    PYSPARK_PYTHON: /opt/miniconda/bin/python3.5
+    PYSPARK_PYTHON: /opt/miniconda/bin/python
     SPARK_WORKER_CORES: 2
     SPARK_WORKER_MEMORY: 1g
     SPARK_WORKER_PORT: 8881
@@ -58,7 +58,7 @@ worker2:
   hostname: worker2
   environment:
     SPARK_CONF_DIR: /conf
-    PYSPARK_PYTHON: /opt/miniconda/bin/python3.5
+    PYSPARK_PYTHON: /opt/miniconda/bin/python
     SPARK_WORKER_CORES: 2
     SPARK_WORKER_MEMORY: 1g
     SPARK_WORKER_PORT: 8881
