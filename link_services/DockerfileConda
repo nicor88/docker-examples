@@ -1,0 +1,36 @@
+FROM ubuntu:16.04
+MAINTAINER nicor88
+
+RUN apt-get update
+RUN apt-get install -y curl unzip bzip2
+
+# Install conda
+
+# Configure Miniconda
+ENV MINICONDA_VER 4.3.21
+ENV MINICONDA Miniconda3-$MINICONDA_VER-Linux-x86_64.sh
+ENV MINICONDA_URL https://repo.continuum.io/miniconda/$MINICONDA
+ENV CONDA_DIR /opt/miniconda
+
+WORKDIR /tmp
+RUN curl -L $MINICONDA_URL  -o miniconda.sh
+RUN echo $CONDA_DIR
+RUN bash miniconda.sh -b -p $CONDA_DIR
+RUN rm /tmp/miniconda.sh
+RUN $CONDA_DIR/bin/conda install --yes conda==$MINICONDA_VER
+
+# setup conda in the env
+ENV PATH $CONDA_DIR/bin:$PATH
+
+# config conda
+RUN conda config --set always_yes yes
+RUN conda config -f --add channels conda-forge
+RUN conda config -f --add channels defaults
+
+# install libs
+RUN conda install numpy pandas
+RUN conda install psycopg2
+RUN conda install sqlalchemy
+RUN conda install ruamel_yaml
+
+WORKDIR /
