@@ -11,7 +11,7 @@ db:
 app_python:
   build: .
   dockerfile: DockerfileConda
-  command: python /app/app.py
+  command: python /app/fetcher.py
   hostname: app_python
   links:
     - db
