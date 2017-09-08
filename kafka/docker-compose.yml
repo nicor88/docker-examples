@@ -1,7 +1,7 @@
 kafka:
   image: spotify/kafka
   environment:
-    - ADVERTISED_HOST=10.201.30.3
+    - ADVERTISED_HOST=127.0.0.1
     - ADVERTISED_PORT=9092
     - TOPICS=test
   ports:
