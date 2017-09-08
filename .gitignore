@@ -2,6 +2,9 @@
 .idea
 */data
 */build_dir
+*/db_data
+*/__pycache__
+*.pyc
 
 # Ignore jupyter checkpoints
 .ipynb_checkpoints/
