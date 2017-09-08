@@ -8,3 +8,4 @@ docker-compose up
 Kafka will be available in localhost:9092
 If you want to use link Kafka to another service inside Docker,
 you should put as `ADVERTISED_HOST` the IP of the container where Kafka is running.
+Start a docker container with a link service to kafka, and retrive the IP from this container.
