@@ -36,7 +36,7 @@ docker login
 docker push yourUser/imageName
 </pre>
 
-## Utility commands Docker
+## Utilities commands Docker
 
 ### Containers Utility
 Show running Containers: `docker ps`
